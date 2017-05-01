@@ -1,6 +1,7 @@
 CREATE DATABASE `kalanjiyam` DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
   
 use `kalanjiyam`;
+--tett
 
 CREATE TABLE `category`
 (
