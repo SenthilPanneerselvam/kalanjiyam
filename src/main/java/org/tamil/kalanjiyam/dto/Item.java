@@ -6,7 +6,7 @@ public class Item implements Serializable {
 
 	private Integer id;
 	
-	private String identifier;
+	private String name;
 	
 	private String content;
 	
@@ -26,12 +26,12 @@ public class Item implements Serializable {
 		this.id = id;
 	}
 
-	public String getIdentifier() {
-		return identifier;
+	public String getName() {
+		return name;
 	}
 
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getContent() {
