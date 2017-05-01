@@ -5,7 +5,7 @@
 	<artifactId>Services</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Services</name>
-	<packaging>war</packaging>
+	<!-- packaging>war</packaging -->
 	<description>Services for Kalanjiyam project</description>
 
 	<parent>
