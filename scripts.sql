@@ -1,7 +1,7 @@
 CREATE DATABASE `kalanjiyam` DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
   
 use `kalanjiyam`;
---test
+--test 2
 
 CREATE TABLE `category`
 (
