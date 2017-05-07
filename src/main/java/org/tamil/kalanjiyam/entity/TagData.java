@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tags")
+@Table(name="tag")
 public class TagData {
 	
 	@Column(name="tag_id")
