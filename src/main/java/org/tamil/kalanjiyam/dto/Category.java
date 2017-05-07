@@ -8,8 +8,6 @@ public class Category implements Serializable {
 	
 	private String description;
 	
-	private String author;
-	
 	private String year;
 
 	public Integer getId() {
@@ -26,14 +24,6 @@ public class Category implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
 	}
 
 	public String getYear() {

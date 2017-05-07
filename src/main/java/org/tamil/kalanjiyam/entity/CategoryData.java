@@ -24,9 +24,6 @@ public class CategoryData implements Serializable {
 	@Column(name="cat_desc")
 	private String description;
 	
-	@Column(name="cat_author")
-	private String author;
-	
 	@Column(name="cat_pub_year")
 	private String year;
 
@@ -44,14 +41,6 @@ public class CategoryData implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
 	}
 
 	public String getYear() {

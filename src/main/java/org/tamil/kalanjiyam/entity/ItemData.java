@@ -1,7 +1,9 @@
 package org.tamil.kalanjiyam.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -39,9 +42,23 @@ public class ItemData implements Serializable {
 	@Column(name="item_genre")
 	private String genre;
 	
+	@Column(name="author")
+	private String author;
+	
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cat_id")
 	private CategoryData category;
+	
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+	private List<TagData> tags;
+
+	public List<TagData> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<TagData> tags) {
+		this.tags = tags;
+	}
 
 	public Integer getId() {
 		return id;
@@ -99,6 +116,14 @@ public class ItemData implements Serializable {
 		this.genre = genre;
 	}
 
+	public String getAuthor() {
+		return author;
+	}
+	
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	
 	public CategoryData getCategory() {
 		return category;
 	}

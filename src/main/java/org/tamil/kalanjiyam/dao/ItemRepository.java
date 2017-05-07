@@ -7,4 +7,6 @@ public interface ItemRepository extends JpaRepository<ItemData, Integer>{
 
 	public ItemData findByNameAndCategoryId(String name, Integer categoryId);
 	
+	public Long countByCategoryId(Integer categoryId);
+	
 }

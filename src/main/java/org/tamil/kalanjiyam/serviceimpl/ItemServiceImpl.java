@@ -23,4 +23,9 @@ public class ItemServiceImpl implements ItemService {
 		return beanMapper.map(item, Item.class);
 	}
 
+	@Override
+	public Long getItemCount(Integer categoryId) {
+		return itemRepo.countByCategoryId(categoryId);
+	}
+
 }

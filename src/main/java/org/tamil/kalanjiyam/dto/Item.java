@@ -1,6 +1,7 @@
 package org.tamil.kalanjiyam.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Item implements Serializable {
 
@@ -17,6 +18,10 @@ public class Item implements Serializable {
 	private String situation;
 	
 	private String genre;
+	
+	private String author;
+	
+	private List<Tag> tags;
 
 	public Integer getId() {
 		return id;
@@ -72,5 +77,21 @@ public class Item implements Serializable {
 
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
 	}
 }

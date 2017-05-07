@@ -13,7 +13,7 @@ import org.tamil.kalanjiyam.service.CategoryService;
 import org.tamil.kalanjiyam.service.ItemService;
 
 @RestController
-public class CategoryController {
+public class ItemController {
 	
 	@Autowired
 	private CategoryService categoryService;
@@ -22,10 +22,17 @@ public class CategoryController {
 	private ItemService itemService;
 
 	@RequestMapping(value="/public/item/{categoryName}/{itemName}", method=RequestMethod.GET)
-	public Item getUser(@PathVariable String categoryName, @PathVariable String itemName) {
+	public Item getItem(@PathVariable String categoryName, @PathVariable String itemName) {
 		// retrieve item for this particular category
 		Category category = categoryService.getCategory(categoryName);
+		
 		if (category != null) {
+			if ("Random".equalsIgnoreCase(itemName)) {
+				Long count = itemService.getItemCount(category.getId());
+				if(count != null && count > 0) {
+					itemName = String.valueOf(Math.ceil(count * Math.random()));
+				}
+			}
 			return itemService.getItem(itemName, category.getId());
 		} else {
 			throw new AppException("ERR_001", HttpStatus.BAD_REQUEST, "Invalid category name");

@@ -8,4 +8,6 @@ public interface ItemService {
 
 	public Item getItem(String itemName, Integer categoryId);
 	
+	public Long getItemCount(Integer categoryId);
+	
 }

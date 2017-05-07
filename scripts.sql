@@ -27,4 +27,3 @@ CREATE TABLE `item`
 	CONSTRAINT `FK_item_category` FOREIGN KEY (`cat_id`) REFERENCES `category` (`cat_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO item(item_name,item_content,item_exp,item_exp_by,cat_id) values('1','அகர முதல எழுத்தெல்லாம் ஆதி<br />பகவன் முதற்றே உலகு','அகரம் எழுத்துக்களுக்கு முதன்மை; ஆதிபகவன், உலகில் வாழும் உயிர்களுக்கு முதன்மை','கலைஞர் ',1);
