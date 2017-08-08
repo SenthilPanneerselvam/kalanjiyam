@@ -25,7 +25,6 @@ public class ItemServiceImpl implements ItemService {
 	private BeanMapper beanMapper;
 	
 	@PersistenceContext
-	@Autowired
 	private EntityManager entityManager;
 	
 	@Override
