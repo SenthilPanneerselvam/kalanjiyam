@@ -3,6 +3,7 @@ package org.tamil.kalanjiyam.serviceimpl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class ItemServiceImpl implements ItemService {
 	@Autowired
 	private BeanMapper beanMapper;
 	
+	@PersistenceContext
 	@Autowired
 	private EntityManager entityManager;
 	
