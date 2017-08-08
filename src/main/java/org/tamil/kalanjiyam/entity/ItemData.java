@@ -21,7 +21,6 @@ public class ItemData implements Serializable {
 
 	@Column(name="item_id")
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
 	@Column(name="item_name")

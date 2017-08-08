@@ -13,9 +13,10 @@ import javax.persistence.Table;
 @Table(name="category")
 public class CategoryData implements Serializable {
 	
+	private static final long serialVersionUID = -1289322823668948304L;
+
 	@Column(name="cat_id")
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
 	@Column(name="cat_name")

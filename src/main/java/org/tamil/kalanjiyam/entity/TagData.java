@@ -16,7 +16,6 @@ public class TagData {
 	
 	@Column(name="tag_id")
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
 	@Column(name="tag_name")
