@@ -3,10 +3,10 @@ package org.tamil.kalanjiyam.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,6 +61,26 @@ public class ItemController {
 		} else {
 			throw new AppException("ERR_001", HttpStatus.BAD_REQUEST, "Invalid category name");
 		}
+	}
+	
+	@RequestMapping(value="/respond" , method=RequestMethod.GET)
+	public ResponseEntity<?> getResponse(@RequestParam String request) {
+		// if string is a number 
+					// if number is valid and within 1330 - return the thirukkural associated
+		if(StringUtils.isNumeric(request)) {
+			Integer itemNumber = Integer.valueOf(request);
+			if (itemNumber <= 1330) {
+				return new ResponseEntity<Item>(getItem("திருக்குறள்", request),HttpStatus.OK);
+			}
+		} 
+		// else if it is RANDOM / random
+					// return a random thirukkural
+		else if (request.equalsIgnoreCase(RANDOM)) {
+			return new ResponseEntity<Item>(getItem("திருக்குறள்", request),HttpStatus.OK);
+		} else {
+			// handle by automated API
+		}
+		return new ResponseEntity<String>("some response",HttpStatus.OK);
 	}
 	
 }
