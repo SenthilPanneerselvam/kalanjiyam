@@ -1,9 +1,12 @@
 package org.tamil.kalanjiyam.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +22,7 @@ import org.tamil.kalanjiyam.dto.Item;
 import org.tamil.kalanjiyam.dto.SearchRequest;
 import org.tamil.kalanjiyam.service.CategoryService;
 import org.tamil.kalanjiyam.service.ItemService;
+import org.tamil.kalanjiyam.utils.HttpUtils;
 import org.tamil.kalanjiyam.utils.KalanjiyamUtils;
 
 @CrossOrigin
@@ -64,7 +68,7 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value="/respond" , method=RequestMethod.GET)
-	public ResponseEntity<?> getResponse(@RequestParam String request) {
+	public ResponseEntity<?> getResponse(@RequestParam String request) throws ClientProtocolException, IOException {
 		// if string is a number 
 					// if number is valid and within 1330 - return the thirukkural associated
 		if(StringUtils.isNumeric(request)) {
@@ -78,7 +82,8 @@ public class ItemController {
 		else if (request.equalsIgnoreCase(RANDOM)) {
 			return new ResponseEntity<Item>(getItem("திருக்குறள்", request),HttpStatus.OK);
 		} else {
-			// handle by automated API
+			// call diaglowflow url
+			return new ResponseEntity<String>(HttpUtils.callDialigFlow(request),HttpStatus.OK);
 		}
 		return new ResponseEntity<String>("some response",HttpStatus.OK);
 	}
