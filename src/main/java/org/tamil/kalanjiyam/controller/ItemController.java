@@ -86,7 +86,7 @@ public class ItemController {
 			return new ResponseEntity<Item>(getItem("திருக்குறள்", request),HttpStatus.OK);
 		} else {
 			// call diaglowflow url
-			String msg = HttpUtils.callDialigFlow(HttpUtils.callGoogleTranslation(request));
+			String msg = HttpUtils.callDialogFlow(HttpUtils.callGoogleTranslation(request));
 			ChatResponse response = new ChatResponse();
 			response.setMsg(msg);
 			response.setType("string");
