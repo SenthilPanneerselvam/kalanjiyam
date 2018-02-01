@@ -1,6 +1,7 @@
 package org.tamil.kalanjiyam.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.tamil.kalanjiyam.core.AppException;
 import org.tamil.kalanjiyam.dto.Category;
+import org.tamil.kalanjiyam.dto.ChatResponse;
 import org.tamil.kalanjiyam.dto.Item;
 import org.tamil.kalanjiyam.dto.SearchRequest;
 import org.tamil.kalanjiyam.service.CategoryService;
 import org.tamil.kalanjiyam.service.ItemService;
+import org.tamil.kalanjiyam.utils.AjaxResult;
 import org.tamil.kalanjiyam.utils.HttpUtils;
 import org.tamil.kalanjiyam.utils.KalanjiyamUtils;
 
@@ -83,7 +86,15 @@ public class ItemController {
 			return new ResponseEntity<Item>(getItem("திருக்குறள்", request),HttpStatus.OK);
 		} else {
 			// call diaglowflow url
-			return new ResponseEntity<String>(HttpUtils.callDialigFlow(request),HttpStatus.OK);
+			String msg = HttpUtils.callDialigFlow(HttpUtils.callGoogleTranslation(request));
+			ChatResponse response = new ChatResponse();
+			response.setMsg(msg);
+			response.setType("string");
+			List<ChatResponse> data = new ArrayList<>();
+			data.add(response);
+			AjaxResult result = new AjaxResult();
+			result.setData(data);
+			return new ResponseEntity<AjaxResult>(result,HttpStatus.OK);
 		}
 		return new ResponseEntity<String>("some response",HttpStatus.OK);
 	}

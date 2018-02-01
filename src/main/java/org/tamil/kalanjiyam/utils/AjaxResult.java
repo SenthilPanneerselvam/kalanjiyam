@@ -1,18 +1,20 @@
 package org.tamil.kalanjiyam.utils;
 
 
-import java.util.ArrayList;
+import java.util.List;
+
+import org.tamil.kalanjiyam.dto.ChatResponse;
 
 public class AjaxResult   { 
 	/**
 	 * 
 	 */
 
-	private ArrayList<Object> data;
-	public void setData(ArrayList<Object> data){
+	private List<ChatResponse> data;
+	public void setData(List<ChatResponse> data){
 		this.data = data;
 	}
-	public ArrayList<Object> getData(){
+	public List<ChatResponse> getData(){
 		return data;
 	}
 }
