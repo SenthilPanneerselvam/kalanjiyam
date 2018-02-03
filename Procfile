@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -XX:+UseCompressedOops -jar target/*.war --spring.data.mongodb.uri=$MONGOLAB_URI
+web: java $JAVA_OPTS -jar target/dependency/webapp-runner.jar --port $PORT target/*.war
