@@ -28,16 +28,20 @@ public class HttpUtils {
 	private static final String USER_AGENT = "Mozilla/5.0 (Linux; <Android Version>; <Build Tag etc.>) AppleWebKit/<WebKit Rev> (KHTML, like Gecko) Chrome/<Chrome Rev> Mobile Safari/<WebKit Rev>";
 
 	public static String callDialogFlow(String requestText) throws ClientProtocolException, IOException {
+		long start = System.currentTimeMillis();
 		String url = URL.replace("{1}",URLEncoder.encode(requestText));
 		Map<String, String> headers = new HashMap<String, String>();
 		headers.put("Authorization", "Bearer b18648df543d49c0a87d67f3ddb908da");
 		String json = getJSON(url, headers);
+		System.out.println(" Time taken for DF" + (System.currentTimeMillis() - start));
 		return JsonPath.read(json, "$.result.fulfillment.messages[0].speech");
 	}
 	
 	public static String callGoogleTranslation(String requestText) throws ClientProtocolException, IOException {
+		long start = System.currentTimeMillis();
 		String url = GOOGLE_TRANSLATION.replace("{1}",URLEncoder.encode(requestText));
 		String json = getJSON(url, null);
+		System.out.println(" Time taken for GT" + (System.currentTimeMillis() - start));
 		return JsonPath.read(json, "$.data.translations[0].translatedText");
 	}
 	
@@ -54,8 +58,6 @@ public class HttpUtils {
 		InputStream instream = null;
 		StringBuffer result = new StringBuffer();
 		try {
-			System.out.println("DF Response Code : "
-	                + response.getStatusLine().getStatusCode());
 
 			instream = response.getEntity().getContent();
 			
